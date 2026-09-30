@@ -1,0 +1,37 @@
+# Dependencies 
+node_modules/
+
+# Test output
+coverage/            # Jest, nyc/c8 reports
+.nyc_output/         # nyc (Mocha coverage)
+mochawesome-report/  # only if you use mochawesome
+junit.xml
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+venv/
+.venv/
+env/ 
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# IDE
+.vscode/
+.history/
+*.code-workspace
+.idea/
