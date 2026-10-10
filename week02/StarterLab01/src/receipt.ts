@@ -14,7 +14,7 @@ const ITEMS = [
 ];
 
 export function addItem(name: string, price: number) {
-  const newItem = { "name" = name, "price" = price };
+  const newItem = { "name" : name, "price" : price };
   ITEMS.push(newItem);
 }
 
@@ -45,8 +45,8 @@ export function printReceipt(taxRate: number) {
 
   console.log("************************");
   console.log(`Subtotal: $${String(total)}`);
-  console.log(`Tax: $ + ${String(taxRate)}");
-  console.log(`Total: $ + ${tax(String(taxRate))}");
+  console.log(`Tax: $ + ${String(taxRate)}`);
+  console.log(`Total: $ + ${tax(String(taxRate))}`);
 }
 
 // AI transparency: AI was used to clean up this code.

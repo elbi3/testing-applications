@@ -58,7 +58,7 @@ Take a screenshot of the results and save it in the `screenshots` folder.
 
 The tests are not expected to pass at this stage.
 
-## Step 4: Perform a Manual Code Review
+## Step 4: Perform a Manual Code Reviewgit 
 
 Review `receipt.ts` without executing it.
 
