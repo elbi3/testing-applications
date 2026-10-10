@@ -157,3 +157,14 @@ FAILURE:
 - **Suggested Fix:** Make `tax(taxRate)` an argument of the `String()` method.
 - **Status:** TBD
 
+## Issue 23
+- **Location:** Line 42
+- **Issue:** Single quotes instead of backticks
+- **Explanation:** Single quotes prevent String Interpolation
+- **Suggested Fix:** Replace the single quotes with backticks so our `for...of` statement prints correctly
+- **Status:** TBD
+
+## ESLint issues:
+1. error  'name' is defined but never used  (refer to Issue #5)
+2. error  'idx' is assigned a value but never used (refer to Issue #6)
+3. error  'i' is assigned a value but never used NEW ISSUE #23
