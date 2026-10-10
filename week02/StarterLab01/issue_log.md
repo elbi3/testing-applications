@@ -8,21 +8,21 @@ FAILURE:
 - **Issue:** Incorrect Object `key:value` syntax 
 - **Explanation:** The equals operator assigns a value to the lefthand side of the statement, however these are not meant to be JavaScript statements, but values assigned to keys.
 - **Suggested Fix:** Replace "=" with ":" for the key `name` and allso `price`
-- **Status:** TBD
+- **Status:** Fixed
 
 ## Issue 2
 - **Location:** Line 12
 - **Issue:** Dangling comma
 - **Explanation:** This comma is doing nothing, and also adds length to our list without adding additional content
 - **Suggested Fix:** Delete the comma and the line so that ITEMS is length of 4
-- **Status:** TBD
+- **Status:** Fixed
 
 ## Issue 3
 - **Location:** Line 16-25
 - **Issue:** Inconsistent coding practices
 - **Explanation:** The function `addItem` has no return value, however the `deleteItem` function returns `ITEMS`.
 - **Suggested Fix:** Determine whether we need to return anything from either of these functions, or will a console.log suffice? (Grocery list display is not part of the requirements)
-- **Status:** TBD
+- **Status:** Fixed
 
 ## Issue 4
 - **Location:** Line 16-19
@@ -35,7 +35,7 @@ FAILURE:
 - **Location:** Line 23
 - **Issue:** Incorrect Array item removal
 - **Explanation:** `ITEMS.pop()` removes the last element in an Array, however requirements state we delete items, and this can be done by matching the name parameter to a key
-- **Suggested Fix:** Consider using a different Array prototype method, such as `slice()`
+- **Suggested Fix:** Consider using a different Array prototype method, such as `splice()`
 - **Status:** TBD
 
 ## Issue 6
@@ -168,3 +168,7 @@ FAILURE:
 1. error  'name' is defined but never used  (refer to Issue #5)
 2. error  'idx' is assigned a value but never used (refer to Issue #6)
 3. error  'i' is assigned a value but never used NEW ISSUE #23
+
+(ADDITIONAL ISSUES DISCOVERED DURING CORRECTIONS)
+- `indexOf` does not work well for Arrays of Objects. Switched to `findIndex` method to search by Object Property
+- Removed "+" from `Tax:...` and `Total:...` lines of receipt as this looks more like failed concatenation than correct printout
