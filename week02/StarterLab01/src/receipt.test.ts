@@ -2,12 +2,14 @@ import { describe, test, expect, jest, afterEach } from "@jest/globals";
 import { addItem, deleteItem, total, tax, printReceipt, ITEMS } from "./fixed_receipt.js";
 
 
-describe("the function `addItem", () => {
+describe("the module `fixed_receipt`", () => {
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
     test("the function `addItem` produces the expected result using valid input", () => {
         addItem("slice", 5.99);
         expect(ITEMS[4]).toMatchObject({name: "slice", price: 5.99});
     });
-
     test("the function `addItem` handles invalid input of negative tax amount", () => {  
         expect(() => {addItem("0",-7)}).toThrow("Function input not valid");
 
@@ -15,10 +17,6 @@ describe("the function `addItem", () => {
     test("the function `addItem` handles empty strings", () => { 
         expect(() => {addItem("", 3)}).toThrow("Function input not valid");
     });
-});
-
-
-describe("the function `deleteItem", () => {
     test("the function `deleteItem` produces the expected result using valid input", () => {
         deleteItem("avocado oil");
         expect(ITEMS.length).toEqual(4);
@@ -30,12 +28,9 @@ describe("the function `deleteItem", () => {
     test("the function `deleteItem` handles empty string parameters", () => {
         expect(() => {deleteItem("")}).toThrow("Function input not valid");
     });
-})
-
-describe("the function `total", () => {
     test("the function `total` produces the expected result using valid input", () => {
-        const myTotal = total();
-        expect(myTotal).toEqual(47.49);
+    //should be 21.99 + 8.75 + 6.75 = 37.49, since we deleted "slice" and "avocado oil"
+        expect(total()).toEqual(37.49);
     });
     test("the function `total` handles an empty `ITEMS` Array by returning 0", () => {
         deleteItem("paper towels");
@@ -43,57 +38,51 @@ describe("the function `total", () => {
         deleteItem("eggs");
         expect(total()).toEqual(0);
     });
-    test("the function `total` handles an edge case where incorrect data is passed", () => {
-//IDK WHAT TO PUT HERE
-        expect(total()).toHaveReturned(undefined);
+    test("the function `total` handles an edge case where there is missing data in ITEMS", () => {
+        expect(total()).toEqual(0);
     });
-})
-
-describe("the function `tax", () => {
-    const ITEMS = [
-        { name: "paper towels", price: 21.99 },
-        { name: "sandwich", price: 8.75 },
-        { name: "eggs", price: 6.75 },
-        { name: "avocado oil", price: 10.0 },
-    ];
     test("the function `tax` produces the expected result using valid input", () => {
+        addItem("paper towels", 21.99);
         const result = tax(0.07);
-        expect(result).toBe(3.32);
+        expect(result).toBe(1.54);
     });
-    test("the function `tax` handles invalid input or an incorrect value", () => {
-        expect(tax(-2)).toThrow()
+    test("the function `tax` handles case where total is 0", () => {
+        deleteItem("paper towels");
+        expect(tax(0)).toBe(0);
     });
-    test("the function `tax` handles edgecases such as negative numbers and falsey values", () => {
-        // expect(tax(-2, "")).toThrow()
-//IDK WHAT TO PUT HERE
+    test("the function `tax` handles edgecases such as negative numbers as inputs", () => {
+        expect(() => {tax(-2)}).toThrow("Function input not valid");
     });
-})
-
-describe("the function `printReceipt", () => {
-    afterEach(() => {
-        jest.restoreAllMocks();
-    });
-    const ITEMS = [
-        { name: "paper towels", price: 21.99 },
-        { name: "sandwich", price: 8.75 },
-        { name: "eggs", price: 6.75 },
-        { name: "avocado oil", price: 10.0 },
-    ];
-    const taxRate = 0.07;
     test("the function `printReceipt` produces the expected result using valid input", () => {
+        addItem("slice", 5.99);
+        addItem("paper towels", 21.99);
+        const taxRate = 0.07;
         const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
         printReceipt(taxRate);
+        expect(logSpy).toHaveBeenCalledTimes(7);
         expect(logSpy).toHaveBeenCalledWith("************************");
-        expect(logSpy).toHaveBeenCalledWith(`Tax: $ + ${String(taxRate)}`);
-        // logSpy.mockRestore();
+        expect(logSpy).toHaveBeenCalledWith("slice : $5.99");
+        expect(logSpy).toHaveBeenCalledWith("paper towels : $21.99");
+        expect(logSpy).toHaveBeenCalledWith("************************");
+        expect(logSpy).toHaveBeenCalledWith(`Subtotal: $${String(total())}`);
+        expect(logSpy).toHaveBeenCalledWith(`Tax: $${String(taxRate)}`);
+        expect(logSpy).toHaveBeenCalledWith(`Total: $${String(tax(taxRate) + total())}`);
     });
     test("the function `printReceipt` handles invalid input or an incorrect value", () => {
         const taxRate = -2;
-        expect(printReceipt(taxRate)).toThrow();
+        expect(() => {printReceipt(taxRate)}).toThrow("Function input not valid");
     });
-    test("the function `printReceipt` handles an undefined input", () => {
-//IDK WHAT TO PUT HERE
+    test("the function `printReceipt` still prints if there are no values", () => {
+        deleteItem("slice");
+        deleteItem("paper towels");
         const taxRate = 0;
-        expect(printReceipt(taxRate)).toThrow();
+        const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+        printReceipt(taxRate);
+        expect(logSpy).toHaveBeenCalledTimes(5);
+        expect(logSpy).toHaveBeenCalledWith("************************");
+        expect(logSpy).toHaveBeenCalledWith("************************");
+        expect(logSpy).toHaveBeenCalledWith(`Subtotal: $${String(total())}`);
+        expect(logSpy).toHaveBeenCalledWith(`Tax: $${String(taxRate)}`);
+        expect(logSpy).toHaveBeenCalledWith(`Total: $${String(tax(taxRate) + total())}`);
     });
-})
+});

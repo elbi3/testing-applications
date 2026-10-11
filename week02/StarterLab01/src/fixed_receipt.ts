@@ -29,20 +29,18 @@ export function deleteItem(name: string) {
     return ITEMS;
 }
 
-export function total() {
-
+export function total() {//note that this is technically the subtotal
     let total = 0;
     for (const item of ITEMS) {
         total += item.price;
     }
-//call tax here?
-    return total;
+    return Math.round(total * 100)/100;
 }
 
 export function tax(taxRate: number) {
     if(taxRate < 0) throw new Error("Function input not valid");
     const tax = total() * taxRate;
-    return tax.toFixed(2);
+    return Math.round(tax * 100)/100;
 }
 
 export function printReceipt(taxRate: number) {
@@ -50,20 +48,11 @@ export function printReceipt(taxRate: number) {
     console.log("************************");
 
     for (const item of ITEMS) {
-        console.log(`${item.name} : $${item.price}}`);
+        console.log(`${item.name} : $${item.price}`);
     }
 
     console.log("************************");
     console.log(`Subtotal: $${String(total())}`);
     console.log(`Tax: $${String(taxRate)}`);
-    console.log(`Total: $${String(tax(taxRate))}`);
+    console.log(`Total: $${String(tax(taxRate) + total())}`);
 }
-
-// AI transparency: AI was used to clean up this code.
-
-// addItem("pickles", 3.33);
-// console.log("ITEMS WITH PICKLES??", ITEMS);
-// deleteItem("eggs");
-// console.log("ITEMS NO EGGS??", ITEMS);
-// console.log("total: ", total());
-// printReceipt(.07);
