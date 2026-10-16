@@ -1,16 +1,19 @@
 # North Vacation Booking Reservation Requirements
 
 ## Test Cases
+
 TC01, Invalid Number of Nights
 - **Classification:** Number of nights
 - **Partition:** Invalid high
 - **Input:** `32` nights
 - **Expected Result:** The reservation is rejected (More than 31 nights is invalid) with `ValueError`
+
 TC02, Invalid Number of Nights
 - **Classification:** Number of nights
 - **Partition:** Invalid low
 - **Input:** `-1` nights
 - **Expected Result:** The reservation is rejected (Less than 1 night is invalid) with `ValueError`
+
 TC03, Valid Number of Nights
 - **Classification:** Number of nights
 - **Partition:** Valid
@@ -22,16 +25,19 @@ TC04, Invalid Number of Guests
 - **Partition:** Invalid high
 - **Input:** `13` guests
 - **Expected Result:** The reservation is rejected (More than 12 guests is invalid) with `ValueError`
+
 TC05, Invalid Number of Guests 
 - **Classification:** Number of guests
 - **Partition:** Invalid low
 - **Input:** `0` guests
 - **Expected Result:** The reservation is rejected (Less than 1 guest is invalid) with `ValueError`
+
 TC06, Valid Number of Guests 
 - **Classification:** Number of guests
 - **Partition:** Valid, standard rate
 - **Input:** `5` guests
 - **Expected Result:** The reservation is accepted (1–5 guests is valid with "No additional guest fee")
+
 TC07, Valid Number of Guests 
 - **Classification:** Number of guests
 - **Partition:** Valid, additional fee
@@ -43,11 +49,13 @@ TC08, Invalid Check-in / checkout dates
 - **Partition:** Invalid late
 - **Input:** `10/02`,`10/01` 
 - **Expected Result:** The reservation is rejected (Check-in after checkout) with `ValueError`
+
 TC09, Invalid Check-in / checkout dates *I know this is technically covered by TC10 but I still need it*
 - **Classification:** Check-in / checkout dates
 - **Partition:** Invalid sameday
 - **Input:** `10/02`,`10/02`
 - **Expected Result:** The reservation is rejected (Check-in matches checkout) with `ValueError`
+
 TC10, Valid Check-in / checkout dates 
 - **Classification:** Check-in / checkout dates
 - **Partition:** Valid
@@ -60,6 +68,7 @@ TC11, Invalid Availability
 - **Partition:** Invalid, missing
 - **Input:** `10/02`,`10/10` 
 - **Expected Result:** The reservation is rejected (Not all nights available) with `UnavailableError`
+
 TC12, Valid Availability
 - **Classification:** Check-in / checkout dates
 - **Partition:** Valid (checkout-checkin)
