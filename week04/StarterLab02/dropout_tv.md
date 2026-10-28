@@ -4,7 +4,7 @@
 ## Step 1: Select a Website
 
 [dropout tv](https://www.dropout.tv/)
-I will be testing the Search feature, as well as the login feature
+I will be testing the Search (shows) feature, as well as the login feature
 
 ## Equivalence Partitioning
 
@@ -49,14 +49,84 @@ Note 3: Any amount of white space entered returned no results, so "           " 
 
 When I click login button, I am taken to a "Dropout Sign in" modal, then I enter my email address, then I click next,then I enter my password and click sign in, OR I select "Reset your password" ("Don't know your password? Never set one?") OR I select "Email me a sign in link". If I select the email link option, I see a "Check your email!" message. Once I click on my email link (elsewhere, even on another machine), I am taken to [pick](https://watch.dropout.tv/profile/pick) "Who is watching?". I can select my profile, add a profile, or click on "Manage Profiles" button. I click on my profile, and I am taken to the main page.
 
-Condition Stubs
+#### Condition Stubs
 Did user enter an email address?
 Did user enter correct password?
 Did user select email link? 
 Did user open their email and click the link?
-Action Stubs
+
+#### Action Stubs
 User is taken to "who is watching" selection
 User selects profile and is taken to main page
+User selects edit profile
+User is taken to "Add profile" page 
+User enters new profile name
+User selects done on "manage profiles" page
+User returned to "who is watching selection"
 
+#### table
+
+| Conditions and Actions         | Rule 1 | Rule 2 | Rule 3 | Rule 4 | Rule 5 | Rule 6 |
+| ------------------------------ | :----: | :----: | :----: | :----: | :----: | :----: |
+| User enters valid email        |   T    |   T    |   F    |   T    |   T    |   T    |
+| User enters correct password   |   T    |   -    |   -    |   -    |   F    |   -    |
+| User uses email link           |   -    |   T    |   -    |   T    |   -    |   F    |
+| **Select user profile**        |   X    |   X    |   -    |   -    |   -    |   -    |
+| **Create new profile**         |   -    |   -    |   -    |   X    |   -    |   -    |
+| **Logged in**                  |   X    |   X    |   -    |   X    |   -    |   -    |
+| **Raise `ValueError`**         |   -    |   -    |   X    |   -    |   X    |   X    |
+
+Note: I just assume the "create new profile" implies you select it as well, because it loops back to select user profile otherwise, which is already tested
+
+#### test cases
+
+### TC01: Valid Login With Password (Uses Existing Profile)
+**Email entered**: true
+**Email input**: totalyvalidemail@mail.com
+**Valid Password**: password1234
+**User Profile**: me (valid)
+**Logged in**: true
+
+### TC02: Valid Login With Email Link (Uses Existing Profile)
+**Email entered**: true
+**Email input**: totalyvalidemail@mail.com
+**Selected email link**: true (clicked)
+**User Profile**: me (valid)
+**Logged in**: true
+
+### TC03: Invalid Login (no email)
+**Email entered**: true
+**Email input**: INVALIDSOBAD@mail.com
+**Logged in**: false
+**Expected Result:**: `ValueError`
+
+### TC04: Valid Login With New User Profile Selection
+**Email entered**: true
+**Email input**: totalyvalidemail@mail.com
+**Selected email link**: true (clicked)
+**User Profile**: create new (valid)
+**Logged in**: true
+
+### TC05: Invalid Login (incorrect password)
+**Email entered**: true
+**Email input**: totalyvalidemail@mail.com
+**Invalid Password**: ohno
+**Logged in**: false
+**Expected Result:**: `ValueError`
+
+### TC06: Invalid Login (link not accessed in email)
+**Email entered**: true
+**Email input**: totalyvalidemail@mail.com
+**Selected email link**: false (unclicked)
+**Logged in**: false
+**Expected Result:**: `ValueError`
 
 ## State Transition Testing
+
+States
+Not logged in
+Logged in
+
+| Current State | Event                  | Expected State   | Expected Result                     |
+| ------------- | ---------------------- | ---------------- | ----------------------------------- |
+| Not logged in | 
