@@ -123,10 +123,26 @@ Note: I just assume the "create new profile" implies you select it as well, beca
 
 ## State Transition Testing
 
-States
+States:
 Not logged in
 Logged in
 
-| Current State | Event                  | Expected State   | Expected Result                     |
-| ------------- | ---------------------- | ---------------- | ----------------------------------- |
-| Not logged in | 
+| Current State | Event                    | Expected State   | Expected Result                     |
+| ------------- | ------------------------ | ---------------- | ----------------------------------- |
+| Not logged in | Enter email              | Not logged in    | User is prompted to enter password  |
+| Not logged in | Enter valid password     | Not logged in    | User is taken to profile page       |
+| Not logged in | Enter invalid password   | Not logged in    | User sees invalid password message  |
+| Not logged in | Click send link to email | Not logged in    | Click takes user to profile page    |
+| Not logged in | User selects profile     | Logged in        | User is taken to the home page      |
+| Not logged in | User creates new profile | Not logged in    | Click takes user to profile page    |
+
+
+
+| Test ID | Starting State | Event                      | Expected State   | Expected Result                     | Transition Type |
+| ------- | -------------- | -------------------------- | ---------------- | ----------------------------------- | --------------- |
+| TC01    | Not logged in  | Enter email                | Not logged in    | User is prompted to enter password  | Valid           |
+| TC02    | Not logged in  | Enter valid password       | Not logged in    | User is taken to profile page       | Valid           |
+| TC03    | Not logged in  | Enter invalid password     | Not logged in    | User sees invalid password message  | Invalid         |
+| TC04    | Not logged in  | Click send link to email   | Not logged in    | Click takes user to profile page    | Valid           |
+| TC05    | Not logged in  | User selects profile       | Logged in        | User is taken to the home page      | Valid           |
+| TC06    | Not logged in  | User creates new profile   | Not logged in    | Click takes user to profile page    | Valid           |
