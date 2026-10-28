@@ -47,6 +47,7 @@ ACTIONS
 ## Step 2: Create a Decision Table
 
 | Conditions and Actions     | Rule 1 | Rule 2 | Rule 3 | Rule 4 | Rule 5 | Rule 6 |  
+| -------------------------- | :----: | :----: | :----: | :----: | :----: | :----: |
 | valid stay length          |   T    |   T    |   T    |   T    |   T    |   T    |  
 | 1-5 guests                 |   F    |   T    |   F    |   F    |   T    |   T    |  
 | 6-12 guests                |   F    |   F    |   T    |   T    |   F    |   F    |  
