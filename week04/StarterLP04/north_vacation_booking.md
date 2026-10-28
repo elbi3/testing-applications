@@ -46,19 +46,19 @@ ACTIONS
 
 ## Step 2: Create a Decision Table
 
-| Conditions and Actions     | Rule 1 | Rule 2 | Rule 3 | Rule 4 | Rule 5 | Rule 6 |
-| valid stay length          |   T    |   T    |   T    |   T    |   T    |   T    |
-| 1-5 guests                 |   F    |   T    |   F    |   F    |   T    |   T    |
-| 6-12 guests                |   F    |   F    |   T    |   T    |   F    |   F    |
-| checkin before checkout    |   -    |   T    |   F    |   T    |   T    |   T    |
-| dates available            |   -    |   T    |   -    |   T    |   F    |   T    |
-| payment made               |   -    |   F    |   -    |   T    |   -    |   T    |
-| **Bill cleaning fee**      |   -    |   -    |   -    |   X    |   -    |   X    |
-| **Bill 200 a night**       |   -    |   -    |   -    |   X    |   -    |   X    |
-| **Bill 25 per person**     |   -    |   -    |   -    |   X    |   -    |   -    |
-| **Payment Success**        |   -    |   -    |   -    |   X    |   -    |   X    |
-| **Payment `Cancelled`**    |   -    |   X    |   -    |   -    |   -    |   X    | 
-| **Reservation Canceled**   |   -    |   -    |   X    |   -    |   X    |   X    |
+| Conditions and Actions     | Rule 1 | Rule 2 | Rule 3 | Rule 4 | Rule 5 | Rule 6 |  
+| valid stay length          |   T    |   T    |   T    |   T    |   T    |   T    |  
+| 1-5 guests                 |   F    |   T    |   F    |   F    |   T    |   T    |  
+| 6-12 guests                |   F    |   F    |   T    |   T    |   F    |   F    |  
+| checkin before checkout    |   -    |   T    |   F    |   T    |   T    |   T    |  
+| dates available            |   -    |   T    |   -    |   T    |   F    |   T    |  
+| payment made               |   -    |   F    |   -    |   T    |   -    |   T    |  
+| **Bill cleaning fee**      |   -    |   -    |   -    |   X    |   -    |   X    |  
+| **Bill 200 a night**       |   -    |   -    |   -    |   X    |   -    |   X    |  
+| **Bill 25 per person**     |   -    |   -    |   -    |   X    |   -    |   -    |  
+| **Payment Success**        |   -    |   -    |   -    |   X    |   -    |   X    |  
+| **Payment `Cancelled`**    |   -    |   X    |   -    |   -    |   -    |   X    |   
+| **Reservation Canceled**   |   -    |   -    |   X    |   -    |   X    |   X    |  
 
 Rule 1: Create a stay for 7 day duration, for 13 guests.
 Rule 2: Create a stay for 4 guests, where dates are available and correct, but payment not successful.
