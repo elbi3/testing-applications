@@ -5,7 +5,7 @@ import { createTodo, addTodo, countDone } from "./todoUtils";
 import type { Todo } from "./todoUtils";
 
 
-describe("the function `createTodo`", ()=>{ //test suite 2
+describe("the function `createTodo`", ()=>{ //test suite 1
     it("creates a todo object with the input string", () => {
         const myTodo = createTodo("BUY SOCKS");
         
@@ -16,7 +16,7 @@ describe("the function `createTodo`", ()=>{ //test suite 2
     });
 });
 
-describe("the function `addTodo`", ()=>{ //test suite 1
+describe("the function `addTodo`", ()=>{ //test suite 2
     it("does not add a blank string to the todo list", () => {
         const myList: Todo[] = [];
         const list = addTodo(myList, " ");
