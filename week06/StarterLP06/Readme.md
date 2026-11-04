@@ -68,7 +68,7 @@ Perform each check and record one of the following results:
 Include a brief note when a result needs additional explanation.
 
 <details>
-<summary>Checklist format</summary>
+<summary>Checklist</summary>
 
 | Check             | Result      | Notes                                   |
 | ----------------- | ----------- | --------------------------------------- |
@@ -111,7 +111,7 @@ For the same feature you selected in Step 1:
 - If a criterion fails, explain what happened.
 
 <details>
-<summary>Acceptance criteria format</summary>
+<summary>Acceptance criteria</summary>
 
 | Given, When, Then                                                                                                                              | Result     | Notes      |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------- |
