@@ -3,6 +3,7 @@ node_modules/
 
 # Test output
 coverage/            # Jest, nyc/c8 reports
+**/coverage
 .nyc_output/         # nyc (Mocha coverage)
 mochawesome-report/  # only if you use mochawesome
 junit.xml
