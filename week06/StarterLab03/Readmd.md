@@ -1,22 +1,5 @@
 # Lab: Exploratory and White Box Testing
 
-## Topics
-
-- Exploratory testing
-- White box testing
-- Statement coverage
-- Code coverage
-- React component testing
-
-## Learning Objectives
-
-- Perform a focused exploratory testing session.
-- Examine source code to identify statements, branches, and loops.
-- Design white box tests based on the internal structure of an application.
-- Test React state changes and user interactions.
-- Use a coverage report to evaluate test coverage.
-- Compare tests created before and after viewing the source code.
-
 # Deliverables
 
 ## Step 1: Exploratory Testing
@@ -132,10 +115,10 @@ Record the coverage percentages reported for `App.tsx`:
 
 | Coverage Type | Percentage |
 | ------------- | ---------- |
-| Statements    |            |
-| Branches      |            |
-| Functions     |            |
-| Lines         |            |
+| Statements    |   100      |
+| Branches      |   100      |
+| Functions     |   100      |
+| Lines         |   100      |
 
 Include a screenshot of the coverage report.
 
