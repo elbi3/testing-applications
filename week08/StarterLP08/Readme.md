@@ -115,7 +115,7 @@ Explain why you selected each severity and priority. Remember that severity desc
 | ------ | -------- | -------- | ----------- |
 | 1 Num guests input accepts 15 | **Medium** | **High** | Feature technically works, but creates invalid reservation |
 | 2 Date picker selects one date | **High** | **Urgent** | Can technically make a booking, but cannot enter valid stay range |
-| 3 Res Availability not found | **High** | **Urgent** | Can technically make a booking, but check availability range |
+| 3 Res Availability not found | **High** | **Urgent** | Can technically make a booking, but cannot check availability range |
 
 </details>
 (4-6 need investigation)
