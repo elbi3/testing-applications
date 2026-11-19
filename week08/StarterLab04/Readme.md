@@ -4,32 +4,31 @@
 
 Create a brief test plan for the provided Counter application.
 
-Test objectives:
+**Test objectives:**
 
 Verify that "counter-app" functions as a basic counter, with basic increment, decrement, and reset functionality. UI should reflect application logic accurately and reactively. Sould increment and decrement by one unless buttons indicate visually a different increase/decrease metric.
 
-What is in and out of scope:
-In scope:
+**In scope:**
 Increment, decrement, and reset functions
 UI elements display and behave as expected.
 Basic user flow implementation and effectiveness.
 
-Out of scope:
+**Out of scope:**
 Other mathematical calculations or behaviors, features unrelated to increment/decrement/reset, add-ons, page routing and navigation, performance beyond basic component reactivity, wholely unrelated features like payments and image display.
 
-The testing approach:
+**The testing approach:**
 Exploratory and white box testing (writing test based on source code and internal structure), statement coverate, state changes.
 
-The test environment and tools:
+**The test environment and tools:**
 The Counter application, Jest, React Testing Library, VSCode, Git, and GitHub.
 
-At least one product risk
+**product risk**
 Spam button clicks prevent correct count display
 
-Entry criteria:
+**Entry criteria:**
 "counter-app" runs and displays in the browser, testing environment installed and active
 
-Exit criteria:
+**Exit criteria:**
 Planned test cases run and pass, defects fixed or accepted, all findings documented
 
 ## Step 2: Design Test Cases
@@ -105,3 +104,5 @@ All 7 tests pass.
 
 #### Severity and priority rationale
 The application's only feature is non-functional for decrementing: the count only goes up, never down.
+
+Note: defect was located, but left in for the purposes of re-running these tests. Line 10 in `src/App.tsx` could be adjusted to `      <button onClick={() => setCount(count - 1)}>Decrement</button>`, and then all tests pass. (Including this because my exit criteria said tests must pass and defects be fixed.)
